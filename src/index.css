@@ -1,0 +1,76 @@
+body {
+  margin: 0; }
+
+a {
+  text-decoration: none; }
+
+.shelfieWrap {
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  min-height: 800px;
+  min-width: 655px; }
+
+.header {
+  width: 100%;
+  height: 100px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #AB2A19; }
+
+.headerContent {
+  width: auto;
+  height: auto;
+  position: relative;
+  left: -165px; }
+
+.shelfieLogo {
+  position: relative;
+  top: 13px;
+  margin-right: 10px;
+  width: 50px; }
+
+.shelfieSpan {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  color: #FFF;
+  font-size: 30px; }
+
+.shelves {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 20px; }
+
+.links {
+  width: 500px;
+  height: 60px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  background-color: #D34735;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700; }
+
+.shelfSpan {
+  position: relative;
+  left: -110px; }
+
+/*# sourceMappingURL=index.css.map */
