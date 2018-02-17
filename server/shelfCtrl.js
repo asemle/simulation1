@@ -29,14 +29,28 @@ module.exports = {
             .then(shelves => res.status(200).send(shelves))
             .catch((err) => res.status(500).send(err));
         
-        },
+    },
     GetShelf: (req, res) => {
         const dbInstance = req.app.get('db');
         
         dbInstance.getShelf([req.params.shelf])
             .then(shelf => res.status(200).send(shelf))
             .catch((err) => res.status(500).send(err));
-
+    },
+    AddToBin: (req, res) => {
+        console.log(req.body)
+        const dbInstance = req.app.get('db');
+        dbInstance.updateBin([req.body.shelf, req.body.number, req.body.name, req.body.price])
+        .then(bin => res.status(200).send(bin))
+            .catch((err) => console.log(err))
+    },
+    GetBin: (req, res) => {
+        const dbInstance = req.app.get('db');
+        let shelf = req.params.id.split('')[0];
+        let number = req.params.id.split('')[1]
+        dbInstance.getBin([shelf, number])
+        .then(bin => res.status(200).send(bin))
+            .catch(err => console.log(err))
     }
     
     // Update: function (req, res) {

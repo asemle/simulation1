@@ -14,10 +14,8 @@ export default class Shelf extends Component {
     componentDidMount() {
         axios.get(`http://localhost:3001/api/shelves/${this.props.match.params.id}`).then((res) => {
             this.setState({
-                bins: res.data
+                bins: res.data.sort((a,b) => a.number > b.number)
             })
-
-
         })
     }
 
@@ -26,7 +24,7 @@ export default class Shelf extends Component {
             {this.state.bins.map((bin, i) => {
             if (bin.name && bin.price) {
                 return (
-                    <Link className='links' to={`/bin/${bin.shelf}${bin.number}`} key={i}>
+                    <Link className={'links binLink'} to={`/bin/${bin.shelf}${bin.number}`} key={i}>
                     <span className="shelfSpan">Bin {bin.number}</span>
                 </Link>
                 )

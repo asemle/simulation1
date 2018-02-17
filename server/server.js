@@ -13,12 +13,13 @@ app.use(cors());
 massive(process.env.connectionString).then(db => app.set('db', db));
 
 
-// app.post('/products', productsCtrl.Create)
+app.post('/api/bin/:id', shelfCtrl.AddToBin)
 
 app.get('/api/shelves', shelfCtrl.GetShelves) 
 
 app.get('/api/shelves/:shelf', shelfCtrl.GetShelf)
 
+app.get('/api/bin/:id', shelfCtrl.GetBin)
 // app.put('/products', productsCtrl.Update)
 
 // app.delete('/products', productsCtrl.Delete);

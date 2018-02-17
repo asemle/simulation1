@@ -65,6 +65,12 @@ a {
     -ms-flex-direction: column;
     flex-direction: column;
     margin-top: 20px;
+    .binLink {
+        background-color: $lightRed;
+        .shelfSpan {
+            left: 0;
+        }
+    }
 }
 
 .links {
@@ -146,7 +152,7 @@ a {
     }
     .binsSpanContainer {
         padding-left: 20px;
-        width: 20%;
+        width: 26.5%;
         min-width: 146px;
         a {
             color: #FFF;
@@ -204,5 +210,77 @@ a {
         cursor: pointer;
         outline: none;
         background-color: $green;
+    }
+}
+
+.binWrap {
+    width: 100%;
+    height: calc(100% - 100px);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: -ms-flexbox;
+    display: flex;
+    .clearfix {
+        width: 10%;
+        min-width: 120px;
+        height: 100%;
+    }
+}
+
+.binContents {
+    width: 90%;
+    padding: 25px 0;
+    height: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    .left {
+        min-width: 200px;
+    }
+}
+
+.right {
+    margin-left: 25px;
+    font-family: $font;
+    .binData {
+        min-width: 526px;
+        min-height: 194px;
+    }
+}
+
+.pTitle {
+
+    margin-top: 0;
+    margin-left: 10px;
+    margin-bottom: 3px;
+    font-family: $font;
+}
+
+.pValue {
+    border: 1px solid #ab2a19;
+    border-radius: 3px;
+    padding: 12px;
+    min-width: 500px;
+    width: auto;
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.binButtons {
+    display: flex;
+    justify-content: space-between;
+    .btnGrey {
+        font-family: $font;
+        background-color: #d8d8d8;
+        height: auto;
+        font-size: 30px;
+        border: none;
+        width: 200px;
+        border-radius: 3px;
+        padding: 10px 0;
+        cursor: pointer;
+        outline: none;
     }
 }
