@@ -5,21 +5,44 @@ import Header from './Header';
 import Bin from './Bin.js';
 
 export default class Shelf extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            shelves: []
+            bins: [],
         }
     }
     componentDidMount() {
-        axios.get
+        axios.get(`http://localhost:3001/api/shelves/${this.props.match.params.id}`).then((res) => {
+            this.setState({
+                bins: res.data
+            })
+
+
+        })
     }
 
     render() {
+        const bins = <div className="shelves">
+            {this.state.bins.map((bin, i) => {
+            if (bin.name && bin.price) {
+                return (
+                    <Link className='links' to={`/bin/${bin.shelf}${bin.number}`} key={i}>
+                    <span className="shelfSpan">Bin {bin.number}</span>
+                </Link>
+                )
+            } else {
+                return (
+                    <Link className='links empty' to={`/create/${bin.shelf}${bin.number}`} key={i}>
+                    <span className="shelfSpan"><strong>+</strong> Add Inventory to bin</span>
+                </Link>
+                )
+            }
+        })
+        }</div>
         return (
         <div>
             <Header></Header>
-            <Link to="/bins/A">heyheyyy</Link>
+            {bins}
         </div>
     )
 }

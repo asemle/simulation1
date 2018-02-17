@@ -23,8 +23,7 @@ export default class Header extends Component {
                             </div>
                 
             } else if (location.split("/")[1] === "bins") {
-                console.log('hdhfhjfghj')
-            headerStuff = <div className="binsContent">
+                headerStuff = <div className="binsContent">
                                 
                                 <div className="logoContainer">
                                     <Link to="/">
@@ -36,11 +35,48 @@ export default class Header extends Component {
                                         {`Shelf ${location.split("/")[2]}`}
                                     </span>
                                 </div>
-                                
-                                
                             </div>
-            } 
-        
+        } else if (location.split("/")[1] === "create") {
+                 headerStuff = <div className="binsContent binsPage">
+
+                     <div className="logoContainer">
+                         <Link to="/">
+                             <img src={image} alt="shelfie-logo" className="binsLogo" />
+                         </Link>
+                     </div>
+                     <div className="binsSpanContainer">
+                         <span className="binsSpan">
+                             <Link to={`../bins/${location.split("/")[2].split("")[0]}`}>
+                             {`Shelf ${location.split("/")[2].split("")[0]}`}
+                             </Link>
+                         </span>
+                     </div>
+                     <div className="binsSpanContainer second">
+                         <span className="binsSpan">
+                             {`Add to bin ${location.split("/")[2].split("")[1]}`}
+                         </span>
+                     </div>
+                 </div>
+        } else if(location.split("/")[1] === "bin") {
+             headerStuff = <div className="binsContent binsPage">
+
+                     <div className="logoContainer">
+                         <Link to="/">
+                             <img src={image} alt="shelfie-logo" className="binsLogo" />
+                         </Link>
+                     </div>
+                     <div className="binsSpanContainer">
+                         <span className="binsSpan">
+                             {`Shelf ${location.split("/")[2].split("")[0]}`}
+                         </span>
+                     </div>
+                     <div className="binsSpanContainer second">
+                         <span className="binsSpan">
+                             {`Bin ${location.split("/")[2].split("")[1]}`}
+                         </span>
+                     </div>
+                 </div>
+        }
         return (
             <div className="header">
                 {headerStuff}
