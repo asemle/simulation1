@@ -25,11 +25,19 @@ module.exports = {
     GetShelves: (req, res) => {
         const dbInstance = req.app.get('db');
 
-        dbInstance.getShelf()
+        dbInstance.getShelves()
             .then(shelves => res.status(200).send(shelves))
-            .catch(() => res.status(500).send());
+            .catch((err) => res.status(500).send(err));
         
-        }
+        },
+    GetShelf: (req, res) => {
+        const dbInstance = req.app.get('db');
+        
+        dbInstance.getShelf([req.params.shelf])
+            .then(shelf => res.status(200).send(shelf))
+            .catch((err) => res.status(500).send(err));
+
+    }
     
     // Update: function (req, res) {
     //     db.update_product([req.body.id, req.body.description], function (err, product) {

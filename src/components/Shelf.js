@@ -1,10 +1,26 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Bin from './Bin';
+import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Header from './Header';
+import Bin from './Bin.js';
 
-export default (
-    <Switch>
-        <Route component={Bin} exact path="/bin/id" />
+export default class Shelf extends Component {
+    constructor() {
+        super();
+        this.state = {
+            shelves: []
+        }
+    }
+    componentDidMount() {
+        axios.get
+    }
 
-    </Switch>
-)
+    render() {
+        return (
+        <div>
+            <Header></Header>
+            <Link to="/bins/A">heyheyyy</Link>
+        </div>
+    )
+}
+}

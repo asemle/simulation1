@@ -1,2 +1,3 @@
 SELECT *
-FROM shelfie
+FROM bins 
+WHERE shelf = $1

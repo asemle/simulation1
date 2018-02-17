@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 
 
 export default class Bin extends Component {
-    constructor() {
-        super();
-    }
+    // constructor() {
+    //     super();
+    // }
     render() {
         return (
             <div>This is a bin</div>
