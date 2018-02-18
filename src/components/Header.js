@@ -66,9 +66,11 @@ export default class Header extends Component {
                          </Link>
                      </div>
                      <div className="binsSpanContainer">
+                     <Link to={`/bins/${location.split("/")[2].split("")[0]}`}>
                          <span className="binsSpan">
                              {`Shelf ${location.split("/")[2].split("")[0]}`}
                          </span>
+                     </Link>
                      </div>
                      <div className="binsSpanContainer second">
                          <span className="binsSpan">

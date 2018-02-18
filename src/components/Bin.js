@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import Header from './Header.js';
 import axios from 'axios';
 
@@ -10,6 +10,7 @@ export default class Bin extends Component {
             edit: false,
             name: '',
             price: '',
+            shelf: ''
         }
     }
 
@@ -18,38 +19,28 @@ export default class Bin extends Component {
             
             this.setState({
                 name: res.data[0].name,
-                price: res.data[0].price
+                price: res.data[0].price,
+                shelf: res.data[0].shelf
             })
         })
     }
 
     render() {
-        var right = "";
-        if (this.state.edit) {
-            let right = <div className="right">
-                <div className="binData">
-
-                </div>
-                <div className="binButtons">
-
-                </div>
-            </div>
+        // var binName, binPrice
+        if(this.state.edit === true) {
+           var  binName = <input className="pValue" onChange={e=> this.nameChange(e.target.value)} value={this.state.name}></input>
+            var binPrice = <input type="text" className="pValue" onChange={e => this.priceChange(e.target.value)} value={this.state.price}></input>
+            var leftButton = <button onClick={_ => this.put()} className="btnGrey btnGreen">Save</button>
         } else {
-        let right = <div className="right">
-            <div className="binData">
-                <p className="pTitle">Name</p>
-                <p className="pValue">{this.state.name}</p>
-                <p className="pTitle">Price</p>
-                <p className="pValue">{this.state.price}</p>
-            </div>
-            <div className="binButtons">
-                <button onClick={() => this.editBin()}className="btnGrey">Edit</button>
-                <button className="btnGrey">Delete</button>
-            </div>
-        </div>
+            var binName = <p className="pValue">{this.state.name}</p>
+            var binPrice = <p className="pValue">{this.state.price}</p>
+            var leftButton = <button onClick={() => this.editBin()} className="btnGrey">Edit</button>
         }
-
-
+        if (this.state.redirect) {
+            return (
+                <Redirect to={`/bins/${this.state.shelf}`} />
+            )
+        }
         return (
             <div>
                 <Header/>
@@ -59,7 +50,18 @@ export default class Bin extends Component {
                         <div className="left">
                             <img src="http://lorempixel.com/200/200/business/" alt="inventory"/>
                         </div>
-                        {right}
+                        <div className="right">
+                            <div className="binData">
+                                <p className="pTitle">Name</p>
+                                {binName}
+                                <p className="pTitle">Price</p>
+                                {binPrice}
+                            </div>
+                            <div className="binButtons">
+                                {leftButton}
+                                <button onClick={() => this.deleteBin()}className="btnGrey">Delete</button>
+                            </div>
+                        </div>
                     </div>    
                 </div>
             </div>
@@ -68,6 +70,36 @@ export default class Bin extends Component {
     editBin() {
         this.setState({
             edit:true
+        })  
+    }
+    nameChange(val) {
+        this.setState({
+            name: val
         })
+    }
+    priceChange(val) {
+        this.setState({
+            price: val
+        })
+    }
+    put() {
+        let body = {
+            name: this.state.name,
+            price:this.state.price
+        }
+        axios.put(`http://localhost:3001/api/bin/${this.props.match.params.id}`, body)
+        .then(res => {
+            this.setState({
+                redirect:true
+            })
+        }).catch(err => console.log(err))
+    }
+    deleteBin() {
+        axios.delete(`http://localhost:3001/api/bin/${this.props.match.params.id}`)
+            .then(res => {
+                this.setState({
+                    redirect: true
+                })
+            }).catch(err => console.log(err))
     }
 }
