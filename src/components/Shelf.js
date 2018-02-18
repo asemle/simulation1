@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header';
-import Bin from './Bin.js';
 
 export default class Shelf extends Component {
     constructor(props) {

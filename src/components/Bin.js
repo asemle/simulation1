@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import Header from './Header.js';
 import axios from 'axios';
 
@@ -26,15 +26,15 @@ export default class Bin extends Component {
     }
 
     render() {
-        // var binName, binPrice
+        var binName, binPrice, leftButton
         if(this.state.edit === true) {
-           var  binName = <input className="pValue" onChange={e=> this.nameChange(e.target.value)} value={this.state.name}></input>
-            var binPrice = <input type="text" className="pValue" onChange={e => this.priceChange(e.target.value)} value={this.state.price}></input>
-            var leftButton = <button onClick={_ => this.put()} className="btnGrey btnGreen">Save</button>
+           binName = <input className="pValue" onChange={e=> this.nameChange(e.target.value)} value={this.state.name}></input>
+            binPrice = <input type="text" className="pValue" onChange={e => this.priceChange(e.target.value)} value={this.state.price}></input>
+            leftButton = <button onClick={_ => this.put()} className="btnGrey btnGreen">Save</button>
         } else {
-            var binName = <p className="pValue">{this.state.name}</p>
-            var binPrice = <p className="pValue">{this.state.price}</p>
-            var leftButton = <button onClick={() => this.editBin()} className="btnGrey">Edit</button>
+            binName = <p className="pValue">{this.state.name}</p>
+            binPrice = <p className="pValue">{this.state.price}</p>
+            leftButton = <button onClick={() => this.editBin()} className="btnGrey">Edit</button>
         }
         if (this.state.redirect) {
             return (
