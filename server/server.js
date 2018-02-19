@@ -10,6 +10,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('../build'));
+} else {
+    app.use(express.static('./../public/'))
+}
 massive(process.env.connectionString).then(db => app.set('db', db));
 
 
