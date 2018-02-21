@@ -11,7 +11,7 @@ export default class Shelf extends Component {
         }
     }
     componentDidMount() {
-        axios.get(`http://localhost:3001/api/shelves/${this.props.match.params.id}`).then((res) => {
+        axios.get(`/api/shelves/${this.props.match.params.id}`).then((res) => {
             this.setState({
                 bins: res.data.sort((a,b) => a.number > b.number)
             })

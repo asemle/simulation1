@@ -15,7 +15,7 @@ export default class Bin extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:3001/api/bin/${this.props.match.params.id}`).then(res => {
+        axios.get(`/api/bin/${this.props.match.params.id}`).then(res => {
             
             this.setState({
                 name: res.data[0].name,
@@ -87,7 +87,7 @@ export default class Bin extends Component {
             name: this.state.name,
             price:this.state.price
         }
-        axios.put(`http://localhost:3001/api/bin/${this.props.match.params.id}`, body)
+        axios.put(`/api/bin/${this.props.match.params.id}`, body)
         .then(res => {
             this.setState({
                 redirect:true
@@ -95,7 +95,7 @@ export default class Bin extends Component {
         }).catch(err => console.log(err))
     }
     deleteBin() {
-        axios.delete(`http://localhost:3001/api/bin/${this.props.match.params.id}`)
+        axios.delete(`/api/bin/${this.props.match.params.id}`)
             .then(res => {
                 this.setState({
                     redirect: true

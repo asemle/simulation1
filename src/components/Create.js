@@ -23,7 +23,7 @@ export default class Create extends Component {
             shelf: this.state.shelf,
             number: this.state.number
         }
-        axios.post(`http://localhost:3001/api/bin/${this.props.match.params.id}`, body)
+        axios.post(`/api/bin/${this.props.match.params.id}`, body)
             .then((res) => {
                 this.setState({
                     redirect: true
