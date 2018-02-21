@@ -7,8 +7,9 @@ var port = process.env.PORT || 8080;
 const shelfCtrl = require('./shelfCtrl.js');
 require('dotenv').config();
 const app = express();
-app.use(bodyParser.json());
 app.use(cors());
+app.use(bodyParser.json());
+
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('../build'));
