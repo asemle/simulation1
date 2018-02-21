@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const massive = require("massive");
-const port = 3001;
+var port = process.env.PORT || 8080;
 const shelfCtrl = require('./shelfCtrl.js');
 require('dotenv').config();
 const app = express();
